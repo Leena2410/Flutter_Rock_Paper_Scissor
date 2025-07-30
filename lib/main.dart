@@ -12,7 +12,9 @@ var page_bg_color = Color.fromARGB(255, 255, 255, 255);
 var user_choise = "img/unidentified.png";
 var my_choise = "img/unidentified.png";
 var result = "VS";
-
+var wins = 0; 
+var losses = 0; 
+var ties = 0;
 /* ******************* VARIABLES ******************* */
 void main() {
   runApp(const MyApp());
@@ -56,6 +58,53 @@ class _MyAppState extends State<MyApp> {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 20,
         children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                children: [
+                  Text(
+                    "Wins",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                  Text("$wins",
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),)
+                ],
+              ),
+              Column(
+                children: [
+                  Text("Ties",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),),
+                  Text("$ties",
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),)
+                ],
+              ),
+              Column(
+                children: [
+                  Text("Losses",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),),
+                  Text("$losses",
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),)
+                ],
+              ),
+            ],
+          )
+          ,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -192,18 +241,21 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       result = "Lose";
       page_bg_color = Colors.red.shade300;
+      losses++;
     });
   }
   void win(){
     setState(() {
       result = "Win";
       page_bg_color= Colors.green.shade200;
+      wins++;
     });
   }
   void tie(){
     setState(() {
       result = "Tie";
-      page_bg_color= Colors.yellow.shade50; 
+      page_bg_color= Colors.yellow.shade50;
+      ties++; 
     });
   }
 }
